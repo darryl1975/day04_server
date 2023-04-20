@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Cookie {
     List<String> cookies = null;
@@ -36,7 +37,17 @@ public class Cookie {
     }
 
     public String getRandomCookie() {
+        // use Math random function to get random item from cookies collection object
+        Random random = new Random();
 
-        return "";
+        // check if cookies collection are loaded 
+        // if cookies collection loaded, then generate and return random cookie
+        if (cookies == null) {
+            return "There is no cookie.";
+        } else {
+            String randomCookie = cookies.get(random.nextInt(cookies.size()));
+            return randomCookie;
+        }
+
     }
 }
