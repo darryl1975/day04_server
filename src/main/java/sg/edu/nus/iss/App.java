@@ -55,13 +55,18 @@ public class App {
                 while (!msgReceived.equals("close")) {
                     // slide 9 - receive message
                     msgReceived = dis.readUTF();
+                    System.out.println(msgReceived);
 
-                    if (msgReceived.equals("get-cookie")) {
+                    if (msgReceived.equalsIgnoreCase("get-cookie")) {
                         // get a random cookie
                         String randomCookie = cookie.getRandomCookie();
 
                         // send the random cookie out using DataOutputStream (dos.writeUTF(XXXXXXX)))
                         dos.writeUTF(randomCookie);
+                        dos.flush();
+                    } else {
+                        dos.writeUTF("");
+                        dos.flush();
                     }
                 }
 
